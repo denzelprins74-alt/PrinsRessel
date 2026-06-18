@@ -34,11 +34,12 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: gold;
             letter-spacing: 2px;
             animation: glow 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes glow {
@@ -50,6 +51,7 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            margin-left: auto;
         }
 
         nav a {
@@ -87,7 +89,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=1200&h=800&fit=crop') center/cover no-repeat;
             color: white;
             margin-top: 60px;
             padding: 20px;
@@ -118,16 +121,18 @@
             animation: slideIn 0.8s ease;
             position: relative;
             z-index: 1;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
         }
 
         .hero p {
             font-size: 20px;
             margin-bottom: 40px;
-            opacity: 0.8;
+            opacity: 0.9;
             animation: slideIn 0.8s ease 0.2s both;
             position: relative;
             z-index: 1;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
         @keyframes slideIn {
@@ -141,21 +146,28 @@
             }
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            animation: slideIn 0.8s ease 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 15px 50px;
             background: gold;
             color: black;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 5px;
             transition: 0.3s;
             cursor: pointer;
             border: none;
             font-size: 16px;
-            animation: slideIn 0.8s ease 0.4s both;
-            position: relative;
-            z-index: 1;
+            min-width: 200px;
         }
 
         .btn:hover {
@@ -330,10 +342,39 @@
             color: gold;
             text-decoration: none;
             transition: 0.3s;
+            font-weight: bold;
         }
 
         .contact-info a:hover {
             text-decoration: underline;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 12px 30px;
+            background: gold;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            background: white;
         }
 
         /* FOOTER */
@@ -348,13 +389,13 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 20px;
                 padding: 15px 20px;
             }
 
             nav ul {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 15px;
                 text-align: center;
             }
@@ -378,6 +419,11 @@
             .products-container {
                 grid-template-columns: 1fr;
             }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -394,9 +440,11 @@
     </nav>
 
     <section id="home" class="hero">
-        <h1>Premium Streetwear & Sneakers</h1>
-        <p>100% Authentic • Fast Shipping • Trusted Seller</p>
-        <a href="#products" class="btn">Shop Nu</a>
+        <h1>PRINS RESELL</h1>
+        <p>Exclusive items. Real deals. No fake.</p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn">ENTER STORE</a>
+        </div>
     </section>
 
     <section id="products">
@@ -446,10 +494,14 @@
         <h2>Contact</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <p><strong>Instagram:</strong> <a href="https://instagram.com/prinsresell" target="_blank">@prinsresell</a></p>
-                <p><strong>Email:</strong> <a href="mailto:info@prinsresell.nl">info@prinsresell.nl</a></p>
-                <p><strong>Whatsapp:</strong> +31 6 12345678</p>
+                <p><strong>Email:</strong> <a href="mailto:PrinsResell@gmail.com">PrinsResell@gmail.com</a></p>
+                <p><strong>Telefoon:</strong> <a href="tel:+31619619755">+31 6 19619755</a></p>
                 <p><strong>Locatie:</strong> Netherlands 🇳🇱</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="mailto:PrinsResell@gmail.com" class="contact-btn">📧 Email</a>
+                <a href="tel:+31619619755" class="contact-btn">☎️ Bel Ons</a>
+                <a href="https://instagram.com/prinsresell" target="_blank" class="contact-btn">📱 Instagram</a>
             </div>
         </div>
     </section>
