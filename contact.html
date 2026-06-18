@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Prins Resell</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0e27;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+            text-decoration: none;
+            animation: glow 3s ease-in-out infinite;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            bottom: -5px;
+            left: 0;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        /* CONTAINER */
+        .container {
+            margin-top: 150px;
+            padding: 60px 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 150px);
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-content {
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-info:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 12px 50px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            margin: 25px 0;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .contact-info p strong {
+            color: #FFD700;
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-info a {
+            color: #FFA500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        .contact-info a:hover {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-btn {
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: 0.4s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.5);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #FFD700;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 18px;
+                width: 100%;
+            }
+
+            nav ul {
+                width: 100%;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .container {
+                margin-top: 120px;
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .contact-info {
+                padding: 30px 20px;
+            }
+
+            .contact-info p {
+                font-size: 16px;
+            }
+
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Prins Resell</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>📞 Contact</h1>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><strong>📧 Email</strong></p>
+                <p><a href="mailto:PrinsResell@gmail.com">PrinsResell@gmail.com</a></p>
+
+                <p style="margin-top: 40px;"><strong>☎️ Telefoon</strong></p>
+                <p><a href="tel:+31619619755">+31 6 19619755</a></p>
+
+                <p style="margin-top: 40px;"><strong>📍 Locatie</strong></p>
+                <p>Netherlands 🇳🇱</p>
+            </div>
+
+            <div class="contact-buttons">
+                <a href="mailto:PrinsResell@gmail.com" class="contact-btn">📧 Email</a>
+                <a href="tel:+31619619755" class="contact-btn">☎️ Bel</a>
+                <a href="https://instagram.com/prinsresell" target="_blank" class="contact-btn">📱 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Prins Resell. Alle rechten voorbehouden.</p>
+    </footer>
+
+</body>
+</html>

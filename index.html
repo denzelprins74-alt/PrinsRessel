@@ -12,10 +12,10 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background: #000;
+            font-family: 'Poppins', sans-serif;
+            background: #0a0e27;
+            color: white;
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
@@ -26,57 +26,68 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            padding: 25px 60px;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: gold;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px gold;
-            margin-right: auto;
-            min-width: 150px;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+            text-decoration: none;
+            animation: glow 3s ease-in-out infinite;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
+            font-weight: 600;
             position: relative;
-            padding: 5px 10px;
-            border: 2px solid transparent;
+            padding: 8px 0;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            text-transform: uppercase;
         }
 
-        nav a::after {
+        nav a::before {
             content: "";
             position: absolute;
             width: 0;
-            height: 2px;
-            background: gold;
-            bottom: -7px;
-            left: 10px;
-            transition: 0.3s;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            bottom: -5px;
+            left: 0;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         nav a:hover {
-            color: gold;
+            color: #FFD700;
         }
 
-        nav a:hover::after {
-            width: calc(100% - 20px);
+        nav a:hover::before {
+            width: 100%;
         }
 
         /* HERO SECTION */
@@ -87,40 +98,35 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%), 
-                        url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=800&fit=crop') center/cover no-repeat;
-            color: white;
-            margin-top: 60px;
-            padding: 20px;
             position: relative;
             overflow: hidden;
+            margin-top: 70px;
         }
 
-        .hero h1 {
-            font-size: 72px;
-            margin-bottom: 30px;
-            animation: slideIn 0.8s ease;
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
             position: relative;
             z-index: 1;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
-            letter-spacing: 4px;
-            font-weight: bold;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 50px;
-            opacity: 0.95;
-            animation: slideIn 0.8s ease 0.2s both;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
-        }
-
-        @keyframes slideIn {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(60px);
             }
             to {
                 opacity: 1;
@@ -128,281 +134,243 @@
             }
         }
 
-        .hero-buttons {
-            animation: slideIn 0.8s ease 0.4s both;
-            position: relative;
-            z-index: 1;
+        .hero h1 {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.2);
+            animation: slideDown 1s ease-out;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 18px 60px;
-            background: #FFD700;
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 60px;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            text-transform: uppercase;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease-out 0.4s both;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 20px 70px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
-            transition: 0.3s;
+            font-weight: 900;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             border: none;
             font-size: 16px;
             letter-spacing: 2px;
-        }
-
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
-            background: white;
-        }
-
-        /* PRODUCTS SECTION */
-        #products {
-            padding: 100px 50px;
-            background: black;
-            color: white;
-        }
-
-        #products h2 {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 60px;
-            color: gold;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .products-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border-radius: 10px;
+            text-transform: uppercase;
+            position: relative;
             overflow: hidden;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            animation: fadeUp 0.6s ease;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card:hover {
-            border-color: gold;
-            transform: translateY(-10px);
             box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
         }
 
-        .card img {
+        .btn-primary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: 250px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #333 0%, #555 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: gold;
-            font-size: 18px;
-            transition: 0.3s;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.4s;
         }
 
-        .card:hover img {
-            transform: scale(1.05);
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
-        .card h3 {
-            padding: 20px 20px 10px;
-            font-size: 20px;
-            color: gold;
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.5);
         }
 
-        .card p {
-            padding: 0 20px 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* ABOUT SECTION */
-        #about {
-            padding: 100px 50px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            text-align: center;
-        }
-
-        #about h2 {
-            font-size: 48px;
-            margin-bottom: 30px;
-            color: gold;
-        }
-
-        #about p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 50px auto 0;
-        }
-
-        .feature {
-            padding: 30px;
-            background: rgba(255, 215, 0, 0.1);
-            border-left: 4px solid gold;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .feature:hover {
-            background: rgba(255, 215, 0, 0.2);
-            transform: translateX(10px);
-        }
-
-        .feature h3 {
-            color: gold;
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-
-        /* CONTACT SECTION */
-        #contact {
-            padding: 100px 50px;
-            background: black;
-            color: white;
-            text-align: center;
-        }
-
-        #contact h2 {
-            font-size: 48px;
-            margin-bottom: 40px;
-            color: gold;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border: 2px solid gold;
-        }
-
-        .contact-info p {
-            font-size: 18px;
-            margin: 15px 0;
-        }
-
-        .contact-info a {
+        .btn-secondary {
+            padding: 20px 70px;
+            background: transparent;
             color: #FFD700;
             text-decoration: none;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            padding: 12px 30px;
-            background: #FFD700;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
-            transition: 0.3s;
-            display: inline-block;
-            border: none;
+            font-weight: 900;
+            border: 2px solid #FFD700;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.1);
         }
 
-        .contact-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-            background: white;
+        .btn-secondary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #FFD700;
+            z-index: -1;
+            transition: 0.4s;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary:hover {
+            color: #000;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(5px);
+            }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: #FFD700;
+            fill: none;
+            stroke-width: 2;
         }
 
         /* FOOTER */
         footer {
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            color: gold;
-            background: #000;
-            border-top: 2px solid gold;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #FFD700;
+            letter-spacing: 2px;
+            font-weight: 600;
         }
 
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav ul {
+                gap: 30px;
+            }
+
+            .hero h1 {
+                font-size: 70px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 15px 50px;
+                font-size: 14px;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-wrap: wrap;
-                gap: 15px;
+                gap: 20px;
                 padding: 15px 20px;
             }
 
             .logo {
-                margin-right: 0;
+                font-size: 18px;
                 width: 100%;
-                margin-bottom: 10px;
             }
 
             nav ul {
                 width: 100%;
-                gap: 20px;
+                gap: 15px;
                 justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                margin-top: 50px;
             }
 
             .hero h1 {
                 font-size: 40px;
+                letter-spacing: 4px;
             }
 
             .hero p {
-                font-size: 16px;
+                font-size: 14px;
             }
 
-            #products, #about, #contact {
-                padding: 60px 20px;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
             }
 
-            #products h2, #about h2, #contact h2 {
-                font-size: 32px;
-            }
-
-            .products-container {
-                grid-template-columns: 1fr;
+            .btn-primary, .btn-secondary {
+                padding: 15px 40px;
+                width: 90%;
+                font-size: 12px;
             }
         }
     </style>
@@ -410,107 +378,33 @@
 <body>
 
     <nav>
-        <div class="logo">PRINS RESELL</div>
+        <a href="index.html" class="logo">Prins Resell</a>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Shop</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <h1>PRINS RESELL</h1>
-        <p>Exclusive items. Real deals. No fake.</p>
-        <div class="hero-buttons">
-            <a href="#products" class="btn">ENTER STORE</a>
-        </div>
-    </section>
-
-    <section id="products">
-        <h2>🔥 Featured Products</h2>
-        <div class="products-container">
-            <div class="card">
-                <img src="shoe1.jpg" alt="Nike Dunk Low">
-                <h3>Nike Dunk Low</h3>
-                <p>€249</p>
-            </div>
-
-            <div class="card">
-                <img src="shoe2.jpg" alt="Jordan 4 Military Black">
-                <h3>Jordan 4 Military Black</h3>
-                <p>€399</p>
-            </div>
-
-            <div class="card">
-                <img src="shoe3.jpg" alt="Yeezy 350">
-                <h3>Yeezy 350</h3>
-                <p>€289</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>PRINS RESELL</h1>
+            <p>Exclusive items. Real deals. No fake.</p>
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn-primary">🔥 Enter Store</a>
+                <a href="contact.html" class="btn-secondary">📞 Contact</a>
             </div>
         </div>
-    </section>
-
-    <section id="about">
-        <h2>Over Ons</h2>
-        <p>Welkom bij Prins Resell! Wij zijn je betrouwbare bron voor authentieke premium sneakers en streetwear. Met jaren van ervaring in de resale-industrie, garanderen wij 100% originele producten en snelle, veilige verzending.</p>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>✓ 100% Authentiek</h3>
-                <p>Elk product wordt zorgvuldig gecontroleerd op authenticiteit.</p>
-            </div>
-            <div class="feature">
-                <h3>⚡ Snelle Verzending</h3>
-                <p>Verzenden binnen 24 uur na betaling.</p>
-            </div>
-            <div class="feature">
-                <h3>🛡️ Veilig & Betrouwbaar</h3>
-                <p>Beveiligde betaling en goed verpakt.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:PrinsResell@gmail.com">PrinsResell@gmail.com</a></p>
-                <p><strong>Telefoon:</strong> <a href="tel:+31619619755">+31 6 19619755</a></p>
-                <p><strong>Locatie:</strong> Netherlands 🇳🇱</p>
-            </div>
-            <div class="contact-buttons">
-                <a href="mailto:PrinsResell@gmail.com" class="contact-btn">📧 Email</a>
-                <a href="tel:+31619619755" class="contact-btn">☎️ Bel Ons</a>
-                <a href="https://instagram.com/prinsresell" target="_blank" class="contact-btn">📱 Instagram</a>
-            </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5v10M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 Prins Resell. Alle rechten voorbehouden.</p>
     </footer>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(0, 0, 0, 0.98)';
-            } else {
-                nav.style.background = 'rgba(0, 0, 0, 0.95)';
-            }
-        });
-    </script>
 
 </body>
 </html>
